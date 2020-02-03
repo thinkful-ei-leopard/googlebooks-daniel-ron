@@ -19,7 +19,7 @@ function getPrice(book) {
 }
 
 function getImage(book) {
-    console.log(book);
+    
     let image = '';
     if (book.volumeInfo.imageLinks.thumbnail) {
         image = book.volumeInfo.imageLinks.thumbnail;
