@@ -39,15 +39,15 @@ function Book (props) {
 
     return (
         <div className='book-div'>
-            {/* {console.log(props.state.volumeInfo.title)} */}
-            <h2>{props.state.volumeInfo.title}</h2>
+            {/* {console.log(props.book.volumeInfo.title)} */}
+            <h2>{props.book.volumeInfo.title}</h2>
             {/* Will give authors array */}
-            <p className='author'>{props.state.volumeInfo.authors} </p> 
+            <p className='author'>{props.book.volumeInfo.authors} </p> 
             {/* Some books don't have a sale price. 
                 If no sale price, print FREE instead*/}
-            <p className='price'>{getPrice(props.state)} </p>
-            <p className='description'>{props.state.description}</p>
-            <img src={getImage(props.state)} alt={props.state.title}></img>
+            <p className='price'>{getPrice(props.book)} </p>
+            <p className='description'>{props.book.description}</p>
+            <img src={getImage(props.book)} alt={props.book.title}></img>
             
         </div>
     );

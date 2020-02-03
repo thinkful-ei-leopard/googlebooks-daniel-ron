@@ -6,7 +6,7 @@ function Results (props) {
         <div className='results-div'>
             {/* {console.log(props)} */}
             {props.state.items.map( (item, index) =>  {
-                return <Book index={index} key={index} state={props.state.items[index]}/>
+                return <Book index={index} key={index} book={props.state.items[index]}/>
             })}
         </div>
     )
