@@ -11,7 +11,18 @@ class App extends React.Component {
     kind: '',
     items: [],
     totalItems: 0,
+    searchInput:'',
+    printType:'',
+    bookType:'',
+  };
 
+  // If dropdown is selected (BOOK OR PRINT TYPE)
+  // setState to update that data (printType and bookType)
+  // use that DATA to make GET request
+  // with that RESP, update state
+
+  handleDropdownSelection = (selected) => {
+    console.log(selected);
   };
 
   handleSearchClick = (searchInput) => {
@@ -21,7 +32,12 @@ class App extends React.Component {
     // with that RESP, update state
     console.log(searchInput);
     // GET https://www.googleapis.com/books/v1/volumes?q={search terms}
-    fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchInput}&key=AIzaSyA26sUh6FAvgtPAuU3gtCpzGBdN7Yyd5IU`)
+    // https://www.googleapis.com/books/v1/volumes?q=Test&filter=ebooks
+    const BASEURL = `https://www.googleapis.com/books/v1/volumes?`;
+
+    //printType = &filter=WHATEVERTHEVALUEIS
+    const URL = `https://www.googleapis.com/books/v1/volumes?q=${searchInput}${this.state.printType}${this.state.bookType}&key=AIzaSyA26sUh6FAvgtPAuU3gtCpzGBdN7Yyd5IU`;
+    fetch(URL)
       .then(res => res.json())
       .then(resJson => this.setState( {items: resJson.items,})
       );
@@ -35,7 +51,7 @@ class App extends React.Component {
           <h1>Google Book Search</h1>
         </header>
         <Search searchBook={this.handleSearchClick} />
-        <Filter />
+        <Filter dropdownSelection={this.handleDropdownSelection}/>
         <Results state={this.state} />
       </div>
     );
