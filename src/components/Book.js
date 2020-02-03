@@ -36,9 +36,8 @@ function Book (props) {
     // if property does NOT exist
     //      check if another size/value/etc exists
     //      and set it to that value
-
     return (
-        <div className='book-div'>
+        <div className='book-div' onClick={(event) => props.divClick(props.book.id)}>
             {/* {console.log(props.book.volumeInfo.title)} */}
             <h2>{props.book.volumeInfo.title}</h2>
             {/* Will give authors array */}
@@ -46,8 +45,9 @@ function Book (props) {
             {/* Some books don't have a sale price. 
                 If no sale price, print FREE instead*/}
             <p className='price'>{getPrice(props.book)} </p>
-            <p className='description'>{props.book.description}</p>
+            <p className={'description'+ (props.hidden ? ' hidden' : '')}>{props.book.volumeInfo.description}</p>
             <img src={getImage(props.book)} alt={props.book.title}></img>
+            
             
         </div>
     );

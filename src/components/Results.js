@@ -6,7 +6,8 @@ function Results (props) {
         <div className='results-div'>
             {/* {console.log(props)} */}
             {props.state.items.map( (item, index) =>  {
-                return <Book index={index} key={index} book={props.state.items[index]}/>
+                console.log(item.id === props.state.selectedId);
+                return <Book index={index} hidden={item.id !== props.state.selectedId} divClick={props.divClick} key={index} book={props.state.items[index]}/>
             })}
         </div>
     )
