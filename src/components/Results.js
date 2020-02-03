@@ -4,8 +4,9 @@ import Book from './Book';
 function Results (props) {
     return (
         <div className='results-div'>
-            {props.state.items.map( (results, index) =>  {
-                return <Book key={index} state={results.state}/>
+            {/* {console.log(props)} */}
+            {props.state.items.map( (item, index) =>  {
+                return <Book index={index} key={index} state={props.state.items[index]}/>
             })}
         </div>
     )

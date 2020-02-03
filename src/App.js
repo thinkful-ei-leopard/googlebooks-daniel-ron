@@ -10,23 +10,22 @@ class App extends React.Component {
   state = {
     kind: '',
     items: [],
-    totalItems: 0
+    totalItems: 0,
+
   };
 
-  handleSearchClick = () => {
-    // when button is clicked, make GET request
+  handleSearchClick = (searchInput) => {
+    // when button is clicked,
+    // GET DATA FROM INPUT,
+    // use DATA to make GET request
     // with that RESP, update state
-    console.log('working');
+    console.log(searchInput);
     // GET https://www.googleapis.com/books/v1/volumes?q={search terms}
-
-    fetch(`https://www.googleapis.com/books/v1/volumes?q=${SERACH INPUT}&key=AIzaSyA26sUh6FAvgtPAuU3gtCpzGBdN7Yyd5IU`)
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchInput}&key=AIzaSyA26sUh6FAvgtPAuU3gtCpzGBdN7Yyd5IU`)
       .then(res => res.json())
-      .then(res => console.log(res));
+      .then(resJson => this.setState( {items: resJson.items,})
+      );
     // update state
-    this.setState( {
-     
-    });
-
   };
   
   render() {
