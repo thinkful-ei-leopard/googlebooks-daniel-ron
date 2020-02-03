@@ -1,10 +1,12 @@
-import React from '.react';
+import React from 'react';
 import Book from './Book';
 
 function Results (props) {
     return (
         <div className='results-div'>
-            <Book state={props.state} />
+            {props.state.items.map( (results, index) =>  {
+                return <Book key={index} state={results.state}/>
+            })}
         </div>
     )
 

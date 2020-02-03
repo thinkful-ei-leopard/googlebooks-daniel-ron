@@ -3,11 +3,11 @@ import React from 'react';
 
 function Search(props) {
     return (
-    <div className="search-div">
+    <form onSubmit={ () => props.searchBook()} className="search-div">
         <label htmlFor="search-input">Search: </label>
         <input type="text" id="search-input" name="search-input"></input>
         <button type="submit">Search</button>
-    </div>
+    </form >
     );
 }
 
