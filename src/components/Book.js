@@ -9,12 +9,25 @@ function getPrice(book) {
     else if (book.saleInfo.saleability==='NOT_FOR_SALE') {
         bookPrice = 'Not for Sale';
     }
-    else {
-        
+    else if (book.saleInfo.saleability==='FOR_SALE') {
         bookPrice = book.saleInfo.retailPrice.amount;
-        console.log(bookPrice);
+    }
+    else {
+        bookPrice = 'N/A';
     }
     return bookPrice;
+}
+
+function getImage(book) {
+    console.log(book);
+    let image = '';
+    if (book.volumeInfo.imageLinks.thumbnail) {
+        image = book.volumeInfo.imageLinks.thumbnail;
+    }
+    else {
+        image = 'No Image';
+    }
+    return image;
 }
 
 function Book (props) {
@@ -34,7 +47,8 @@ function Book (props) {
                 If no sale price, print FREE instead*/}
             <p className='price'>{getPrice(props.state)} </p>
             <p className='description'>{props.state.description}</p>
-            <img src={props.state.imageLinks.thumbnail} alt={props.state.title}></img>
+            <img src={getImage(props.state)} alt={props.state.title}></img>
+            
         </div>
     );
 }
